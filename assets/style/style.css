@@ -19,6 +19,10 @@ body {
     margin-bottom: 5px;
 }
 
+p {
+    color: aliceblue;
+}
+
 
 
 /* @media only screen and (max-width:1280px) {

@@ -4,18 +4,30 @@ var ratings = ["G", "PG", "PG-13"];
 // var ratingsArr = ["G", "G", "G", "PG", "PG", "PG", "PG", "PG-13", "PG-13", "PG-13"];
 var intialGiphArr = ["Dark Souls", "Overwatch", "PUBG", "Starcraft", "World of Warcraft"];
 var urlHolder = [];
-console.log(intialGiphArr[0]);
+
 
 
 
 // function defintions
 // ===============================================================
 
+var makePicture = function(ratings, data) {
+    for (var k = 0; k < ratings.length; k++){
+        var div = $("<div>");
+        div.addClass(ratings[i]);
+        var p = $("<p class'coloreD'>").text("Ratings: " + ratings);
+        var imgSlot = $("<img class='img-fluid'>");
+        imgSlot.attr('src', data[k].images.fixed_height.url);
+        div.append(p).append(imgSlot);
+        $('#placeToPutThings').prepend(div);
+        console.log(data[k]);
+    };
+};
 
 var creatingButtons = function (catagory) {
     var thing = catagory;
     var button = $("<button>").text(thing);
-    button.addClass("d-inline btn btn-secondary _buttons").attr("type", "button").attr("data-name", thing);
+    button.addClass("d-inline btn btn-secondary _button").attr("type", "button").attr("data-name", thing);
     $("div#containsButtons").append(button);
 };
 
@@ -49,6 +61,18 @@ var searchGIPHY = function (search) {
             }).then(function (response) {
                 var data = response.data;
                 console.log(data);
+                var div4Img = $("<div class'"+data[i].rating+" row'>");
+                var p = $("<p>").text("Rating: " + data[i].rating);
+                for (var b = 0; b < ratings.length; b++) {
+                    console.log('this many times '+ b);
+                    var image = $("<img class='"+data[b].rating+"'>");
+                    image.attr('src', data[b].images.fixed_height.url);
+                    $(div4Img).prepend(image);
+                    console.log("this should be doing 3 times");
+                };
+                console.log("this should have happend three times");
+                $('#placeToPutThings').prepend(div4Img);
+                // makePicture(ratings, data);
             });
         };
         annonomous();
@@ -77,10 +101,10 @@ $("#searchButton").on("click", function (event) {
     }
 });
 
-$(document.body).on("click", "._buttons", function () {
+$(document.body).on("click", "._button", function () {
+    $("#placeToPutThings").empty();
     // have something to remove the old gifs
     var thisButton = $(this).attr("data-name");
     console.log(thisButton);
     searchGIPHY(thisButton);
-
 });
