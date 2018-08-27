@@ -14,13 +14,17 @@ body {
     margin-top: 1%;
 }
 
-._buttons {
+._button {
     margin-right: 5px;
     margin-bottom: 5px;
 }
 
 p {
     color: aliceblue;
+}
+
+img {
+    margin: 5px, 5px, 5px, 5px;
 }
 
 
