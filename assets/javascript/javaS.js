@@ -45,16 +45,25 @@ var searchGIPHY = function (search) {
         for (var i = 0; i < data.length; i++) {
             var imG = $("<img>");
             console.log(data[i].rating);
-            var stillIMG = data[i].images.fixed_width_still.url;
-            var animatedIMG = data[i].images.fixed_width.url;
+            var stillIMG = data[i].images.downsized_still.url;
+            var animatedIMG = data[i].images.downsized.url;
             imG.attr('src', stillIMG).attr('data-still', stillIMG).attr('data-animate', animatedIMG).attr('data-state', 'still');
             imG.addClass('searchedImg');
             if (data[i].rating === 'g') {
-                $("div#G-img").append(imG);
+                var imgCol = $("<div class='col-md-4'>");
+                $(imgCol).append(imG);
+
+                $("div#G-img").append(imgCol)
             } else if (data[i].rating === 'pg') {
-                $("div#PG-img").append(imG);
+                var imgCol = $("<div class='col-md-4'>");
+                $(imgCol).append(imG);
+                
+                $("div#PG-img").append(imgCol);
             } else {
-                $("div#PG-13-img").append(imG);
+                var imgCol = $("<div class='col-md-4'>");
+                $(imgCol).append(imG);
+                
+                $("div#PG-13-img").append(imgCol);
             };
         };
         if ($("div#G-img:empty").length) {
