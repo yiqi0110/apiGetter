@@ -14,7 +14,7 @@ var urlHolder = [];
 var makeRatingDiv = function () {
     for (var k = 0; k < ratings.length; k++) {
         var pdiv = $("<div class='row'>");
-        var p = $("<p>").text("Ratings for these gifs is: " + ratings[k]);
+        var p = $("<p>").text("Ratings for these gifs is: " + ratings[k] + "<br>Click on each image to start the gif, and again to stop it! Enjoy!");
         p.attr('id', ratings[k]);
         pdiv.append(p);
         $("#placeToPutThings").append(pdiv);
