@@ -20,7 +20,7 @@ footer {
     padding-bottom: 1rem;
     background-color: #333333;
     text-align: center;
-    position: relative;
+    position: fixed;
     bottom: 0%;
 
 }
